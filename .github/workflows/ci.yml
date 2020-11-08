@@ -4,12 +4,13 @@ on: [ push, pull_request ]
 
 jobs:
   test:
-    name: test (${{ matrix.ruby }} / ${{ matrix.os }})
+    name: Test (${{ matrix.ruby-version }} / ${{ matrix.os }} / TEST_SYMLINK: ${{ matrix.TEST_SYMLINK }})
     strategy:
       fail-fast: false
       matrix:
         ruby-version: [ 2.7, 2.6, 2.5, 2.4, 2.3, 2.2, 2.1, head ]
         os: [ ubuntu-latest, macos-latest ]
+        TEST_SYMLINK: [ yes, no ]
         include:
           - ruby-version: head
             allow_failures: "true"
@@ -28,6 +29,8 @@ jobs:
       - name: Run the test suite
         run: |
           bundle exec rake
+        env:
+          TEST_SYMLINK: ${{ matrix.TEST_SYMLINK }}
       - name: Run after_script
         run: |
           bundle exec rake after_script
