@@ -310,6 +310,7 @@ END
     end
 
     t do
+      raise 'Test' if RUBY_VERSION == '3.0.0'
       th = Thread.start do
         while true
           __id__
