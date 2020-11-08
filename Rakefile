@@ -31,6 +31,7 @@ end
 SYMLINK_DIRS = ["lib", "test"]
 
 task :before_script do
+  STDERR.puts ENV["TEST_SYMLINK"]
   if ENV["TEST_SYMLINK"] == "yes" and has_symlink?
     SYMLINK_DIRS.each do |d|
       File.rename(d, ".#{d}")
