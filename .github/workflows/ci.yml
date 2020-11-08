@@ -4,7 +4,8 @@ on: [ push, pull_request ]
 
 jobs:
   test:
-    name: Test (${{ matrix.ruby-version }} / ${{ matrix.os }} / TEST_SYMLINK ${{ matrix.TEST_SYMLINK }})
+    name: >-
+      Test (${{ matrix.ruby-version }} / ${{ matrix.os }} / TEST_SYMLINK: ${{ matrix.TEST_SYMLINK }})
     strategy:
       fail-fast: false
       matrix:
