@@ -4,7 +4,7 @@ on: [ push, pull_request ]
 
 jobs:
   test:
-    name: Test (${{ matrix.ruby-version }} / ${{ matrix.os }} / TEST_SYMLINK: ${{ matrix.TEST_SYMLINK }})
+    name: Test (${{ matrix.ruby-version }} / ${{ matrix.os }} / TEST_SYMLINK: ${{ matrix.TEST-SYMLINK }})
     strategy:
       fail-fast: false
       matrix:
@@ -30,7 +30,7 @@ jobs:
         run: |
           bundle exec rake
         env:
-          TEST_SYMLINK: ${{ matrix.TEST_SYMLINK }}
+          TEST_SYMLINK: ${{ matrix.TEST-SYMLINK }}
       - name: Run after_script
         run: |
           bundle exec rake after_script
