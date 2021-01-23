@@ -25,7 +25,7 @@ jobs:
         run: |
           bundle exec rake before_script
       - name: Setup tmate session
-          uses: mxschmitt/action-tmate@v3
+        uses: mxschmitt/action-tmate@v3
       - name: Run the test suite
         run: |
           bundle exec rake
