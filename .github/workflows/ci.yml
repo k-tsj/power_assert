@@ -7,9 +7,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby-version: [ '3.0', 2.7, 2.6, 2.5, 2.4, head ]
-        os: [ ubuntu-latest, macos-latest ]
-        TEST_SYMLINK: [ yes, no ]
+        ruby-version: [ '3.0' ]
+        os: [ ubuntu-latest ]
+        TEST_SYMLINK: [ no ]
     runs-on: ${{ matrix.os }}
     env:
       TEST_SYMLINK: ${{ matrix.TEST_SYMLINK }}
@@ -24,6 +24,8 @@ jobs:
       - name: Run before_script
         run: |
           bundle exec rake before_script
+      - name: Setup tmate session
+          uses: mxschmitt/action-tmate@v3
       - name: Run the test suite
         run: |
           bundle exec rake

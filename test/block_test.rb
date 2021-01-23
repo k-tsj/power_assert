@@ -545,6 +545,14 @@ END
         0 == 0
       })
       if colorize_message
+        _t = assertion_message {
+          0 == 0
+        }
+        binding.irb
+        assertion_message {
+          0 == 0
+        }
+        binding.irb
         assert_not_equal <<END.chomp, assertion_message {
           0 == 0
             |
